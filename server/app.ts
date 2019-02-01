@@ -2,7 +2,7 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as dotenv from 'dotenv';
 
-import {apiRouter} from './routes/api.router';
+import { apiRouter } from './routes/api.router';
 
 const app = express();
 
@@ -11,6 +11,7 @@ dotenv.config();
 app.set('port', process.env.PORT || 3000);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.set('view engine', 'pug');
 
 app.use('/api', apiRouter);
 
