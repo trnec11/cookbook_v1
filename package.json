@@ -2,7 +2,7 @@
   "name": "cookbook_v1",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/server.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "start": "npm-run-all --parallel watch:server watch:build",
@@ -20,10 +20,12 @@
   },
   "homepage": "https://github.com/trnec11/cookbook_v1#readme",
   "dependencies": {
+    "@types/mongodb": "^3.1.19",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
+    "mongodb": "^3.1.13",
     "pug": "^2.0.3"
   },
   "devDependencies": {
