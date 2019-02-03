@@ -11,23 +11,31 @@ fs.readdirSync('node_modules')
     });
 
 module.exports = {
-    entry: './server/app.ts',
+    entry: {
+        server: './server/app.ts',
+        client: './client/index.tsx'
+    },
     output: {
         path: __dirname + '/dist',
-        filename: 'server.js',
+        filename: '[name]-bundle.js',
     },
+
+    // Enable sourcemaps for debugging webpack's output.
+    devtool: "source-map",
+
     resolve: {
         // Add '.ts' and '.tsx' as a resolvable extension.
-        extensions: ['.ts', '.js'],
+        extensions: ['.ts', '.tsx', '.js'],
     },
     module: {
         rules: [
             // All files with a '.ts'
             // extension will be handled by 'ts-loader'
             {
-                use: 'ts-loader',
-                test: /\.ts?$/
-            },
+                // use: 'ts-loader',
+                test: /\.(ts|tsx)$/,
+                loader: 'awesome-typescript-loader',
+            }
         ],
     },
     target: 'node',

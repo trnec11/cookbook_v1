@@ -1,27 +1,16 @@
 {
-    "files": [
-        "server/app.ts"
-    ],
-    "include": [
-        "server/**/*.ts"
-    ],
     "compilerOptions": {
         "module": "commonjs",
         "noImplicitAny": true,
         "target": "es6",
         "outDir": "dist",
-        "rootDir": "server",
+        // "rootDir": "server",
         "sourceMap": true,
         "baseUrl": ".",
         "moduleResolution": "node",
         "removeComments": true,
-        "typeRoots": [
-            "node_modules/@types"
-        ],
-        "paths": {
-            "*": [
-                "node_modules/@types/*"
-            ]
-        }
-    }
+        "jsx": "react"
+    },
+    "include": ["**/*.ts", "**/*.tsx"],
+    "exclude": ["node_modules"]
 }
