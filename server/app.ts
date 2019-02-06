@@ -1,19 +1,24 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as dotenv from 'dotenv';
+import * as mongoose from 'mongoose';
 
 import { apiRouter } from './routes/api.router';
 import * as getRecipesControler from './controllers/getRecipes.controller';
 
 const app = express();
 
+
 dotenv.config();
+const MONGO_CONNECTION = 'mongodb://localhost:27017/cookbook';
+mongoose.connect(MONGO_CONNECTION, { useNewUrlParser: true });
+
 
 // mount json body parser
 app.use(bodyParser.json());
 
-// mount query string parser
 app.use(bodyParser.urlencoded({ extended: true }));
+// mount query string parser
 
 app.set('view engine', 'pug');
 

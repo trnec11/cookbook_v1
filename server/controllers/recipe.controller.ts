@@ -1,16 +1,19 @@
 import { Request, Response } from 'express';
-import { MongoProvider } from '../database/index';
-import { RecipeModel } from '../models/recipe.model';
-import { Recipe } from '../models/schemas/recipe';
+import { Recipe } from '../models/recipe';
 
 class RecipeController {
     public async getRecipes(req: Request, res: Response) {
-        const recipeModel: RecipeModel = await MongoProvider.getRecipeModel();
-        
-        let testRecipe: Recipe = new Recipe('Oatmeal recipe', 'Combine oats, milk, water, salt, ...');
-        if (recipeModel.create(testRecipe)) {
-            res.send('Hallo from recipe controller, new recipe was created.');
-        }
+        const newModel = new Recipe({
+            title: 'test',
+            description: 'Balbla'
+        })
+
+        const saved = await newModel.save();
+
+
+        const recipeCount = await Recipe.getRecipesCount();
+        res.send('Hallo from recipe controller. New recipe saved: ' + saved +  ', number of recipes is ' + recipeCount);
+
     }
 }
 
