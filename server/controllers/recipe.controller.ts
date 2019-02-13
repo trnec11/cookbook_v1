@@ -7,10 +7,10 @@ class RecipeController {
     public async getRecipes(req: Request, res: Response) {
         const recipeModel: RecipeModel = await MongoProvider.getRecipeModel();
         
-        let testRecipe: Recipe = new Recipe('Oatmeal recipe', 'Combine oats, milk, water, salt, ...');
-        if (recipeModel.create(testRecipe)) {
-            res.send('Hallo from recipe controller, new recipe was created.');
-        }
+        // let testRecipe: Recipe = new Recipe('Oatmeal recipe', 'Combine oats, milk, water, salt, ...');
+        // if (recipeModel.create(testRecipe)) {
+        //     res.send('Hallo from recipe controller, new recipe was created.');
+        // }
     }
 }
 
